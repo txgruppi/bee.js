@@ -1,1 +1,1 @@
-# Bee - Bitwise Event Listener
+# Bee - Bitwise Event Emitter
