@@ -24,6 +24,10 @@ export default class Bee {
 
   off(topic, callback = null) {
     if (typeof topic !== 'number' || topic === Infinity) {
+      if (!this._listeners[topic]) {
+        return;
+      }
+
       if (!callback) {
         this._listeners[topic] = [];
         return;
@@ -58,6 +62,10 @@ export default class Bee {
 
   emit(topic, ...args) {
     if (typeof topic !== 'number' || topic === Infinity) {
+      if (!this._listeners[topic]) {
+        return;
+      }
+
       this._listeners[topic].forEach(
         (fn) => fn(...args)
       );
