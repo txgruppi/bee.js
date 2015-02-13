@@ -1,11 +1,7 @@
 export default class Bee {
-  constructor(checkBits = null) {
+  constructor() {
     this._listeners = {};
     this._bitListeners = {};
-
-    if (checkBit) {
-      this.checkBits = checkBits;
-    }
   }
 
   on(topic, callback) {
