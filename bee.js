@@ -11,7 +11,7 @@ export default class Bee {
   on(topic, callback) {
     let listeners = this._listeners;
 
-    if (typeof topic === 'number' && topic !== Infinity) {
+    if (typeof topic === 'number' && topic !== Infinity && !isNaN(topic)) {
       listeners = this._bitListeners;
     }
 
@@ -23,7 +23,7 @@ export default class Bee {
   }
 
   off(topic, callback = null) {
-    if (typeof topic !== 'number' || topic === Infinity) {
+    if (typeof topic !== 'number' || topic === Infinity || isNaN(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
@@ -61,7 +61,7 @@ export default class Bee {
   }
 
   emit(topic, ...args) {
-    if (typeof topic !== 'number' || topic === Infinity) {
+    if (typeof topic !== 'number' || topic === Infinity || isNaN(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
