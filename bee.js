@@ -11,7 +11,7 @@ export default class Bee {
   on(topic, callback) {
     let listeners = this._listeners;
 
-    if (typeof topic === 'number' || topic !== Infinity) {
+    if (typeof topic === 'number' && topic !== Infinity) {
       listeners = this._bitListeners;
     }
 
