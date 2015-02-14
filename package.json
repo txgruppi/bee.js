@@ -1,0 +1,22 @@
+{
+  "name": "bee",
+  "description": "A bitwise powered event emitter :-)",
+  "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js --colors --progress"
+  },
+  "authors": [{
+    "name": "Andrey Knupp Vital",
+    "email": "andreykvital@gmail.com"
+  }, {
+    "name": "Tarcísio Gruppi",
+    "email": "txgruppi@gmail.com"
+  }, {
+    "name": "Tadeu Zagallo",
+    "email": "tadeuzagallo@gmail.com"
+  }],
+  "devDependencies": {
+    "webpack": "^1.5.3",
+    "6to5": "^3.6.5",
+    "6to5-loader": "^3.0.0"
+  }
+}
