@@ -16,7 +16,7 @@ export default class Bee {
 
     let listeners = this._listeners;
 
-    if (this.isBitmask(topic)) {
+    if (this._isBitmask(topic)) {
       listeners = this._bitListeners;
     }
 
@@ -33,7 +33,7 @@ export default class Bee {
    * @return {void}
    */
   off(topic, callback = null) {
-    if (!this.isBitmask(topic)) {
+    if (!this._isBitmask(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
@@ -55,7 +55,7 @@ export default class Bee {
     for (i = 0, l = keys.length; i < l; i++) {
       let key = +keys[i];
 
-      if (!this.checkBits(key, topic)) {
+      if (!this._checkBits(key, topic)) {
         continue;
       }
 
@@ -76,7 +76,7 @@ export default class Bee {
    * @return {void}
    */
   emit(topic, ...args) {
-    if (!this.isBitmask(topic)) {
+    if (!this._isBitmask(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
@@ -93,7 +93,7 @@ export default class Bee {
     for (i = 0, l = keys.length; i < l; i++) {
       let key = +keys[i];
 
-      if (!this.checkBits(key, topic)) {
+      if (!this._checkBits(key, topic)) {
         continue;
       }
 
@@ -104,10 +104,11 @@ export default class Bee {
   }
 
   /**
+   * @private
    * @param  {Numeric} bitmask
    * @return {Boolean}
    */
-  isBitmask(bitmask) {
+  _isBitmask(bitmask) {
     return bitmask !== 0
       && typeof bitmask === 'number'
       && bitmask !== Infinity
@@ -115,11 +116,12 @@ export default class Bee {
   }
 
   /**
+   * @private
    * @param  {Numeric} key
    * @param  {Numeric} topic
    * @return {Boolean}
    */
-  checkBits(key, topic) {
+  _checkBits(key, topic) {
     return (key & topic) !== 0;
   }
 }
