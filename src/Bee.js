@@ -10,6 +10,10 @@ export default class Bee {
    * @return {void}
    */
   on(topic, callback) {
+    if (typeof callback !== 'function') {
+      return;
+    }
+
     let listeners = this._listeners;
 
     if (this.isBitmask(topic)) {
