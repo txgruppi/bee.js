@@ -11,7 +11,7 @@ export default class Bee {
   on(topic, callback) {
     let listeners = this._listeners;
 
-    if (typeof topic === 'number' && topic !== Infinity) {
+    if (this.isBitmask(topic)) {
       listeners = this._bitListeners;
     }
 
@@ -23,7 +23,7 @@ export default class Bee {
   }
 
   off(topic, callback = null) {
-    if (typeof topic !== 'number' || topic === Infinity) {
+    if (!this.isBitmask(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
@@ -61,7 +61,7 @@ export default class Bee {
   }
 
   emit(topic, ...args) {
-    if (typeof topic !== 'number' || topic === Infinity) {
+    if (!this.isBitmask(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
@@ -86,6 +86,13 @@ export default class Bee {
         (fn) => fn(...args)
       );
     }
+  }
+
+  isBitmask(bitmask) {
+    return bitmask !== 0
+      && typeof bitmask === 'number'
+      && bitmask !== Infinity
+      && !isNaN(bitmask);
   }
 
   checkBits(key, topic) {
