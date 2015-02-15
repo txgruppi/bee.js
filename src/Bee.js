@@ -28,6 +28,13 @@ export default class Bee {
   }
 
   /**
+   * @see {@link on}
+   */
+  addEventListener(topic, callback) {
+    this.on(topic, callback);
+  }
+
+  /**
    * @param  {String|Numeric} topic
    * @param  {Function}       callback
    * @return {void}
@@ -68,6 +75,13 @@ export default class Bee {
         (fn) => fn !== callback
       );
     }
+  }
+
+  /**
+   * @see {@link off}
+   */
+  removeEventListener(topic, callback = null) {
+    this.off(topic, callback);
   }
 
   /**
