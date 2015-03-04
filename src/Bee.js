@@ -4,10 +4,19 @@ export default class Bee {
     this._bitListeners = {};
   }
 
+  /**
+   * @param  {String|Numeric} topic
+   * @param  {Function}       callback
+   * @return {void}
+   */
   on(topic, callback) {
+    if (typeof callback !== 'function') {
+      return;
+    }
+
     let listeners = this._listeners;
 
-    if (this.isBitmask(topic)) {
+    if (this._isBitmask(topic)) {
       listeners = this._bitListeners;
     }
 
@@ -18,8 +27,20 @@ export default class Bee {
     listeners[topic].push(callback);
   }
 
+  /**
+   * @see {@link on}
+   */
+  addEventListener(topic, callback) {
+    this.on(topic, callback);
+  }
+
+  /**
+   * @param  {String|Numeric} topic
+   * @param  {Function}       callback
+   * @return {void}
+   */
   off(topic, callback = null) {
-    if (!this.isBitmask(topic)) {
+    if (!this._isBitmask(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
@@ -41,7 +62,7 @@ export default class Bee {
     for (i = 0, l = keys.length; i < l; i++) {
       let key = +keys[i];
 
-      if (!this.checkBits(key, topic)) {
+      if (!this._checkBits(key, topic)) {
         continue;
       }
 
@@ -56,8 +77,20 @@ export default class Bee {
     }
   }
 
+  /**
+   * @see {@link off}
+   */
+  removeEventListener(topic, callback = null) {
+    this.off(topic, callback);
+  }
+
+  /**
+   * @param  {String|Numeric} topic
+   * @param  {...*}           args
+   * @return {void}
+   */
   emit(topic, ...args) {
-    if (!this.isBitmask(topic)) {
+    if (!this._isBitmask(topic)) {
       if (!this._listeners[topic]) {
         return;
       }
@@ -74,7 +107,7 @@ export default class Bee {
     for (i = 0, l = keys.length; i < l; i++) {
       let key = +keys[i];
 
-      if (!this.checkBits(key, topic)) {
+      if (!this._checkBits(key, topic)) {
         continue;
       }
 
@@ -84,14 +117,25 @@ export default class Bee {
     }
   }
 
-  isBitmask(bitmask) {
+  /**
+   * @private
+   * @param  {Numeric} bitmask
+   * @return {Boolean}
+   */
+  _isBitmask(bitmask) {
     return bitmask !== 0
       && typeof bitmask === 'number'
       && bitmask !== Infinity
       && !isNaN(bitmask);
   }
 
-  checkBits(key, topic) {
+  /**
+   * @private
+   * @param  {Numeric} key
+   * @param  {Numeric} topic
+   * @return {Boolean}
+   */
+  _checkBits(key, topic) {
     return (key & topic) !== 0;
   }
 }

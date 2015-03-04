@@ -1,0 +1,32 @@
+{
+  "name": "bee",
+  "description": "A bitwise powered event emitter :-)",
+  "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js --colors --progress",
+    "test": "jest"
+  },
+  "authors": [{
+    "name": "Andrey Knupp Vital",
+    "email": "andreykvital@gmail.com"
+  }, {
+    "name": "Tarcísio Gruppi",
+    "email": "txgruppi@gmail.com"
+  }, {
+    "name": "Tadeu Zagallo",
+    "email": "tadeuzagallo@gmail.com"
+  }],
+  "devDependencies": {
+    "webpack": "^1.5.3",
+    "6to5": "^3.6.5",
+    "6to5-loader": "^3.0.0",
+    "jest-cli": "^0.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/txgruppi/bee"
+  },
+  "jest": {
+    "rootDir": "src",
+    "scriptPreprocessor": "../jest-preprocessor.js"
+  }
+}
