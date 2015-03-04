@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './Bee.js',
+  entry: './src/Bee.js',
   resolve: {
     extensions: ['', '.js']
   },
