@@ -3,7 +3,8 @@
   "description": "A bitwise powered event emitter :-)",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js --colors --progress",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "npm run-script build"
   },
   "authors": [
     {
