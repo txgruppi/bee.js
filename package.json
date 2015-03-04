@@ -5,16 +5,20 @@
     "build": "./node_modules/webpack/bin/webpack.js --colors --progress",
     "test": "jest"
   },
-  "authors": [{
-    "name": "Andrey Knupp Vital",
-    "email": "andreykvital@gmail.com"
-  }, {
-    "name": "Tarcísio Gruppi",
-    "email": "txgruppi@gmail.com"
-  }, {
-    "name": "Tadeu Zagallo",
-    "email": "tadeuzagallo@gmail.com"
-  }],
+  "authors": [
+    {
+      "name": "Andrey Knupp Vital",
+      "email": "andreykvital@gmail.com"
+    },
+    {
+      "name": "Tarcísio Gruppi",
+      "email": "txgruppi@gmail.com"
+    },
+    {
+      "name": "Tadeu Zagallo",
+      "email": "tadeuzagallo@gmail.com"
+    }
+  ],
   "devDependencies": {
     "webpack": "^1.5.3",
     "6to5": "^3.6.5",
@@ -28,5 +32,6 @@
   "jest": {
     "rootDir": "src",
     "scriptPreprocessor": "../jest-preprocessor.js"
-  }
+  },
+  "version": "0.1.0"
 }
