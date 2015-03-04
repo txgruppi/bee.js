@@ -1,5 +1,5 @@
 {
-  "name": "bee",
+  "name": "bee.js",
   "description": "A bitwise powered event emitter :-)",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js --colors --progress",
