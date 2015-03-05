@@ -1,4 +1,4 @@
-# Bee - Bitwise Event Emitter
+# Bee - Bitwise Event Emitter [![Build Status](https://travis-ci.org/txgruppi/bee.js.svg?branch=master)](https://travis-ci.org/txgruppi/bee.js)
 
 Bee is a JavaScript event emitter which support topics as [**bitmasks**](http://en.wikipedia.org/wiki/Mask_%28computing%29) and OFFC *(of fucking course)* it also works like a charm with normal topics such as *string* ones; as you already do and probably don't knew.
 

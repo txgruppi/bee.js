@@ -1,4 +1,4 @@
-var to5 = require('6to5-core');
+var babel = require('babel-core');
 
 module.exports = {
   /**
@@ -7,7 +7,7 @@ module.exports = {
    * @return {String}
    */
   process: function (src, filename) {
-    return to5.transform(src, {
+    return babel.transform(src, {
       filename: filename
     }).code;
   }
