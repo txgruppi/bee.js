@@ -1,3 +1,5 @@
+import Event from './Event';
+
 export default class Bee {
   constructor() {
     this._listeners = {};
@@ -95,9 +97,11 @@ export default class Bee {
         return;
       }
 
-      this._listeners[topic].forEach(
-        (fn) => fn(...args)
-      );
+      let event = new Event(topic);
+      let i, l;
+      for (i = 0, l = this._listeners[topic].length && !event.isStopped(); i < l; i++) {
+        this._listeners[topic][i](event, ...args);
+      }
 
       return;
     }
@@ -111,9 +115,11 @@ export default class Bee {
         continue;
       }
 
-      this._bitListeners[key].forEach(
-        (fn) => fn(...args)
-      );
+      let event = new Event(key, topic);
+      let i, l;
+      for (i = 0, l = this._bitListeners[key].length && !event.isStopped(); i < l; i++) {
+        this._bitListeners[key][i](event, ...args);
+      }
     }
   }
 
