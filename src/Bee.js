@@ -100,7 +100,7 @@ export default class Bee {
       let event = new Event(topic);
       let i, l;
       for (i = 0, l = this._listeners[topic].length && !event.isStopped(); i < l; i++) {
-        this._listeners[topic](event, ...args);
+        this._listeners[topic][i](event, ...args);
       }
 
       return;
@@ -118,7 +118,7 @@ export default class Bee {
       let event = new Event(key, topic);
       let i, l;
       for (i = 0, l = this._bitListeners[key].length && !event.isStopped(); i < l; i++) {
-        this._bitListeners[key](event, ...args);
+        this._bitListeners[key][i](event, ...args);
       }
     }
   }
